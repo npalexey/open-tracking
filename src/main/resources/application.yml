@@ -1,0 +1,34 @@
+spring:
+  application.name: open-tracking
+  jackson:
+    deserialization.fail-on-unknown-properties: true
+  messages:
+    basename: messages
+    use-code-as-default-message: true
+
+dev.mode: false
+server:
+  port: 9777
+  use-forward-headers: true
+  servlet.contextPath: /v1
+module:
+  api-version: v1
+  id: open-tracking
+  security:
+    debug:
+      enabled: true
+    public-key-path: /home/npalexey/workenv/IdeaProjects/Qlearsite/keys/public.pem
+  notification:
+    rabbitmq:
+      host: localhost
+      port: 5672
+      username: rabbit
+      password: rabbit
+      exchange:
+        name: opened-mail-id
+        type: fanout
+        durable: true
+        auto-delete: false
+logging.level:
+  root: INFO
+  com.qlearsite.eng: DEBUG
